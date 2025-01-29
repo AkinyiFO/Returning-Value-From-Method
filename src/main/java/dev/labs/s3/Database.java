@@ -7,6 +7,22 @@ class Database {
 
     String connectionString = "";
     String username = "";
+    private String password = "Changed!";
+
+    public Database() {
+    }
+
+    public Database(String startConnectionString, String startUsername, String startPassword) {
+        connectionString = startConnectionString;
+        username = startUsername;
+        password = startPassword;
+    }
+
+    // Reuse code
+    // Set default values
+    public Database(String username, String password){
+        this("url", username, password);
+    }
 
     public String getPassword() {
         return password;
@@ -14,16 +30,6 @@ class Database {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    private String password = "Changed!";
-
-    public Database(){}
-
-    public Database(String startConnectionString, String startUsername, String startPassword) {
-        connectionString = startConnectionString;
-        username = startUsername;
-        password = startPassword;
     }
 
     void connect(String newConnectionString, String newUsername, String newPassword) {

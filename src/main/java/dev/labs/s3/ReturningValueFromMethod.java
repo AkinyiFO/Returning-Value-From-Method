@@ -18,8 +18,8 @@ public class ReturningValueFromMethod {
         System.out.println("Statement one");
         System.out.println("Statement two");
         System.out.println("Last statement");
-        return; // Redundant but allowed
-//        return 6; // Compile-time error
+        // Redundant but allowed
+        //        return 6; // Compile-time error
     }
 
     int returnsAValue(int x, int y){

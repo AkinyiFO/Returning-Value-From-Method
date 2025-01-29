@@ -20,13 +20,13 @@ public class Arguments {
         System.out.println("originOne change persisted as " + myCircle.getOriginOne() + " and originTwo changes persisted as " + myCircle.getOriginTwo() + "\n");
     }
 
-    void primitiveDataType(int passedInTheMethod){
+    void primitiveDataType(int passedInTheMethod) {
         System.out.println(passedInTheMethod + " is the argument");
         passedInTheMethod = 10; // Value changes are only within the scope of the method
         System.out.println(passedInTheMethod + " reassigned in method");
     }
 
-    void referenceDataTypes(String passIn){
+    void referenceDataTypes(String passIn) {
         System.out.println(passIn);
         passIn = "Passed in method";
         System.out.println(passIn);
@@ -35,13 +35,22 @@ public class Arguments {
 }
 
 // Ref: https://docs.oracle.com/javase/tutorial/java/javaOO/arguments.html
-class Circle{
-    public Circle(int originOne, int originTwo){
+class Circle {
+    private int originOne;
+    private int originTwo;
+
+    public Circle(int originOne, int originTwo) {
         this.originOne = originOne;
         this.originTwo = originTwo;
     }
 
-    public Circle(){}
+    public Circle() {
+    }
+
+    // For consistency, and easy maintenance, use one constructor for initialization when overloading constructors
+    public Circle(int origin) {
+        this(origin, origin);
+    }
 
     public int getOriginOne() {
         return originOne;
@@ -59,15 +68,12 @@ class Circle{
         this.originTwo = originTwo;
     }
 
-    private int originOne;
-    private int originTwo;
-
     public void moveCircle(Circle circle, int originOne, int originTwo) {
         // code to move origin of circle to x+deltaX, originTwo+deltaY
-        System.out.println("moveCircle passed in arguments for originOne is "+originOne + ", and originTwo is "+originTwo);
+        System.out.println("moveCircle passed in arguments for originOne is " + originOne + ", and originTwo is " + originTwo);
         circle.setOriginOne(circle.getOriginOne() + originOne); // persist even when method returns
         circle.setOriginTwo(circle.getOriginTwo() + originTwo); // persists even when method returns
-        System.out.println("Updated originOne is "+circle.getOriginOne() + ", and originTwo is "+circle.getOriginTwo());
+        System.out.println("Updated originOne is " + circle.getOriginOne() + ", and originTwo is " + circle.getOriginTwo());
 
         // code to assign a new reference to circle - won't persist
         circle = new Circle(0, 0); // Passed in by value does not persist
